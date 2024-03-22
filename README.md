@@ -35,7 +35,12 @@ X_{new} = X + \alpha \nabla f
 ```
 ```math
 \begin{align}
-X_{new}, \, X \in 
+X_{new}, \, X \in \mathbb{R}^d \quad \nabla f \in \mathbb{R}
+\end{align}
+```
+```math
+\begin{align}
+\alpha \in ??
 \end{align}
 ```
 
