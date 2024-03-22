@@ -95,7 +95,7 @@ The gradient_decent class:
 - `Learning Rate Scaling:` using square root of ratio of current derivatives and the highest derivatives encountered (based on RMSprop) is used to reduce the learning as the iterations progress. This allows gradual decrease of learning rate even without secant method scaling allowing for natural decling of learning rate. This could also be turned off.
 - `Momentum based derivative rotation:` is also introduced, where the current derivative vector at a point are rotated towards the weighted-average of the previous derivative vectors (based on heavy-ball gradient decent approach). This could also be turned off.
 - `Support for Constraints:` is also given which use a linear penalty function with a user defined slope to constraint the minimising operation.
-- `Effecient Coding Paradigm:` such as tempalted lambda and meta-programming were used to optimise the code to produce minimal memory and performance overhead. 
+- `Effecient Coding Paradigms:` were used to optimise the code to produce minimal memory and performance overhead. 
 
 ## How to use?
 1. Clone the repo at your desired location.
