@@ -40,7 +40,7 @@ X_{new}, \, X \in \mathbb{R}^d \quad \nabla f \in \mathbb{R}
 ```
 ```math
 \begin{align}
-\alpha \in ??
+\alpha \in \: ??
 \end{align}
 ```
 
