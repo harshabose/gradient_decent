@@ -166,8 +166,6 @@ The true optimal at {0.707106, -0.707106} and {-0.707106, 0.707106} with optimal
 
 <img height="300" width="1141" alt="GD" src="https://github.com/harshabose/gradient_decent/assets/127072856/47eac3f3-0962-417b-b3fa-a5e21b7c2be6">
 
-
-<p>
   | Parameters     | My Algorithm | Classic GD |
   | -------------- | ------------ | ---------- |
   | Initial Point  | {1.6, -1.2}  | {1.6, -1.2}|
@@ -176,7 +174,6 @@ The true optimal at {0.707106, -0.707106} and {-0.707106, 0.707106} with optimal
   | Function Calls | 35           | 342        |
   | Derivative Scalling ?     | off          | off        |
   |tolerance       | 1e-3         | 1e-3       |
-</p>
 
 
 
