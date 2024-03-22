@@ -63,8 +63,10 @@ When both facts are met, we can use secant method to find the mirror. This will 
 ```math
 \begin{align}
 g(\alpha) = f(X + \alpha \nabla f) - f(X)
-\text{find the second root of } \alpha
 \end{align}
+```
+```math
+\text{find the second root of } \alpha
 ```
 
 This allows for proper scalling of the learning rate and provides the perfect guess of learning rate at every iteration whenever the learning rate exceeds the forward stepping condition. Doing this will improve the convergence rate by many folds. See the example below.
