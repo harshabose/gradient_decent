@@ -114,7 +114,11 @@ int main () {
   std::chrono::duration<double> duration = std::chrono::high_resolution_clock::now() - start;
   std::cout << "Time taken: " << duration.count() << " seconds" << std::endl;
 }
-
 ```
-
-
+Output with no compile-time optimisation: 
+```bash
+GD CONVERGED with optimal point at: {0.706751, -0.706773}
+with optimal value: 8.75034e-07
+Time taken: 26 microseconds
+```
+The true optimal is at 0.0 and {0.707106, -0.707106}
