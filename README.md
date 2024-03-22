@@ -26,7 +26,7 @@ f:\;\;\mathbb{R}^d \longrightarrow \mathbb{R}
 \min(f)
 \end{align}
 ```
-Gradient Decent algorithms are usually lacking of proper scalling when findind then next optimal point (See equation below). The learning rate ($\alpha$) is not proerly scalled to convert the derivatives set to the original equation set. Most Gradient Decent algorithms solve this issue by taking a constant learning rate or reduce by a factor the rate every iteration assuming a constant learning rate at the first iteration. In both cases, they are assumed. To, solve this, I have implmented a **Secant Method** based scalling algorithm which aims to find the scale of the learning rate by relating the differential set to the original equation set.
+Gradient Decent algorithms are usually lacking of proper scaling when findind then next optimal point (See equation below). The learning rate ($\alpha$) is not proerly scalled to convert the derivatives set to the original equation set. Most Gradient Decent algorithms solve this issue by taking a constant learning rate and reduce by a factor the rate every iteration. This leads to excessive or limited forward. The user is given the arduous task of providing the nominal learning rate. Predicting this learning step has its own complexity. To alleviate this responsibility from the user, I have implmented a `Secant Method` based scaling algorithm which aims to find the the learning rate by relating the differential set to the original equation set.
 
 ```math
 \begin{align}
@@ -54,12 +54,12 @@ X_{new}\,, \, X \in \mathbb{R}^d \quad \nabla f \in \mathbb{R}
 \end{align}
 ```
 
-### Secant Method Scalling
+### Secant Method Scaling
 - **Fact 1:**  As the gradient decent progress, there will come a point where the step taken eventually skips past the optimal value (assuming large enough step is provided). In such cases, most algorithms use back-tracking to reduce the step to find the next best point which will reduce the $f$ value.
 
 - **Fact 2:**  When Fact 1 is met, there exists another point (lets call this mirror point), in the direction of current gradient, which is equal to current optimal value.
 
-When both facts are met, we can use secant method to find the mirror. This will give us an accurate scale of $\alpha$ relating derivative set and original equation set. Now, with the scalling known, we can assume that the minima might be located at the $\left(\alpha / 2\right)$ position in the direction of derivative vector. A mathematical representation is given below:
+When both facts are met, we can use secant method to find the mirror. This will give us an accurate scale of $\alpha$ relating derivative set and original equation set. Now, with the scaling known, we can assume that the minima might be located at the $\left(\alpha / 2\right)$ position in the direction of derivative vector. A mathematical representation is given below:
 ```math
 \begin{align}
 g(\alpha) = f(X + \alpha \nabla f) - f(X)
@@ -86,12 +86,13 @@ X + \alpha_{2} \nabla f \text{ is the mirror point}
 \text{perfect guess } X_{new} = X + \left(\frac{\alpha_{2}}{2}\right) \nabla f
 ```
 
-This allows for proper scalling of the learning rate and provides the perfect guess of learning rate at every iteration whenever the learning rate exceeds the forward stepping condition. Doing this will improve the convergence rate by many folds. See the example below.
+This allows for proper scaling of the learning rate to reflect the derivative set onto original equation set and provide the perfect guess of learning rate at every iteration whenever the learning rate exceeds the forward stepping condition. Doing this will improve the convergence rate by many folds. See the example below.
 
 ## What are included?
 The gradient_decent class:
-- **Secant Method scalling:** can be turned off and a classic back-tracking methodology could be used instead.
-- **Learning Rate Scalling:** using sqrt ratio of current derivatives and the highest derivatives encountered (based on RMSprop) is provided. This allows gradual decrease of learning rate even without secant method scalling allowing for natural decling of learning rate. This could also be turned off.
+- **Finite Difference:** was used to calculate the derivative, allowing for optimation of non-pure-mathematical "equations".
+- **Secant Method scaling:** can be turned off and a classic back-tracking methodology could be used instead.
+- **Learning Rate Scaling:** using sqrt ratio of current derivatives and the highest derivatives encountered (based on RMSprop) is provided. This allows gradual decrease of learning rate even without secant method scaling allowing for natural decling of learning rate. This could also be turned off.
 - **Momentum based derivative rotation:** is also introduced, where the current derivative vector at a point are rotated towards the weighted-average of the previous derivative vectors (based on heavy-ball gradient decent approach). This could also be turned off.
 - **Support for Constraints:** is also given which use a linear penalty function with a user defined slope (optional) to constraint the minimising operation.
 - **Effecient Coding Paradigm:** such as tempalted lambda and meta-programming were used to optimise the code to produce minimal memory and performance overhead. 
@@ -111,6 +112,8 @@ auto gradient_operator = gd::gradient_decent<double, double, double>(bivarient_f
 gradient_operator.perform_gradient_decent();
 ```
 ## Example
+The following code uses a bechmark 3D exponential equation and has one minima at locations ${\sqrt{2}, -\sqrt{2}}$ and with a value of "0". 
+
 ```cpp
 #include <iostream>
 #include <chrono>
@@ -152,4 +155,4 @@ GD CONVERGED with optimal point at: {0.706751, -0.706773}
 with optimal value: 8.75034e-07
 Time taken: 26 microseconds
 ```
-The true optimal is at 0.0 and {0.707106, -0.707106}. As can be seen, the number of iterations taken (even with a far initial guess) is 4. Compared to classic Gradient Decent which tool 300+ iterations for the same settings. This shows the clear advantage of the `Secant Method Scalling` technique.
+The true optimal is at 0.0 and {0.707106, -0.707106}. As can be seen, the number of iterations taken (even with a far initial guess) is 4. Compared to classic Gradient Decent which tool 300+ iterations for the same settings. This shows the clear advantage of the `Secant Method Scaling` technique.
