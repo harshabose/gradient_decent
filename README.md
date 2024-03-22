@@ -207,6 +207,11 @@ As can be seen, the number of iterations taken (even with a far initial guess) i
         <td class="tg-0lax">off</td>
         <td class="tg-0lax">off</td>
       </tr>
+      <tr>
+        <td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none">Momentum Rotation?</span></td>
+        <td class="tg-0lax">off</td>
+        <td class="tg-0lax">off</td>
+      </tr>
     </tbody>
   </table>
 </div>
