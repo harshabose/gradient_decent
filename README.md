@@ -1,6 +1,8 @@
 # A New Gradient Decent Algorithm
 Gradient Decent with Secant Method scaling. Faster, Robust and Smarter
 
+Gradient Decent algorithms are usually considered lacking of scale in the 
+
 ```math
 \begin{align}
 f:\;\;X^d \longrightarrow \mathbb{R}
@@ -26,4 +28,4 @@ f:\;\;X^d \longrightarrow \mathbb{R}
 
 ```
 
-Gradient Decent algorithms are usually considered lacking of scale in the 
+
