@@ -1,5 +1,5 @@
 # A New Gradient Decent Algorithm
-Gradient Decent with Secant Method scaling. Faster, Robust and Smarter
+A New Gradient Decent Algorithm with Secant Method scaling and Finite Difference Derivatives. Faster, Robust and Smarter
 
 
 Consider the following:
