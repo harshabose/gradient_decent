@@ -164,7 +164,7 @@ The true optimal at {0.707106, -0.707106} and {-0.707106, 0.707106} with optimal
   <img src="https://github.com/harshabose/gradient_decent/assets/127072856/299edffc-cba9-4988-8a0f-4b4397cb6b07" alt="bivarient">
 </p>
 
-<img height="400" width="1141" alt="GD" src="https://github.com/harshabose/gradient_decent/assets/127072856/47eac3f3-0962-417b-b3fa-a5e21b7c2be6">
+<img height="300" width="1141" alt="GD" src="https://github.com/harshabose/gradient_decent/assets/127072856/47eac3f3-0962-417b-b3fa-a5e21b7c2be6">
 
 
 | Parameters     | My Algorithm | Classic GD |
