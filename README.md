@@ -167,7 +167,7 @@ The true optimal is at 0.0 and {0.707106, -0.707106}. As can be seen, the number
 | Function Calls |35            | 199        |
 
 % Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
+\usepackage{graphicx}
 \begin{table}[]
 \centering
 \resizebox{\columnwidth}{!}{%
