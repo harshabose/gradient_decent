@@ -30,7 +30,12 @@ Gradient Decent algorithms are usually lacking of proper scalling when findind t
 
 ```math
 \begin{align}
-\text{forward stepping: } X_{new} = X + \alpha \nabla f
+\text{forward stepping: }
+\end{align}
+```
+```math
+\begin{align}
+X_{new} = X + \alpha \nabla f
 \end{align}
 ```
 ```math
