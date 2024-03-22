@@ -1,7 +1,7 @@
 # A New Gradient Decent Algorithm
 Gradient Decent with Secant Method scaling. Faster, Robust and Smarter
 
-Gradient Decent algorithms are usually considered lacking of scale in the 
+
 
 ```math
 \begin{align}
@@ -23,9 +23,15 @@ f:\;\;X^d \longrightarrow \mathbb{R}
 
 ```math
 \begin{align}
-\min(f(X))
+\min(f)
 \end{align}
+```
+Gradient Decent algorithms are usually considered lacking of proper scalling when findind then next point (See equation below). The learning rate $\alpha$ is not proerly scalled to convert the differential set to the original equation set.
 
+```math
+\begin{align}
+X_{new} = X + \alpha * \nabla f
+\end{align}
 ```
 
 
