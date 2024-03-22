@@ -3,9 +3,9 @@ Gradient Decent with Secant Method scaling. Faster, Robust and Smarter
 
 ```math
 \begin{equation}
-y = f(X)   \quad      X\;\;\forall \in \mathbb{R}^d,\;\;\; y\;\; \forall \in \mathbb{R} \\
+y = f(X)   \quad      X\;\;\forall \in \mathbb{R}^d,\;\;\; y\;\; \forall \in \mathbb{R} \\ \end{equation}
 \min(f(X))
-\end{equation}
+
 
 ```
 
