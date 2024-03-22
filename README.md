@@ -61,7 +61,16 @@ X_{new}, \, X \in \mathbb{R}^d \quad \nabla f \in \mathbb{R}
 
 When both facts are met, we can use secant method to find the point mentioned in Fact 2. This will give us an accurate scale of $\alpha$ relating derivative set and original equation set. Now, with the scalling know, we can assume that the minima might be located at the $\alpha / 2$ position.
 
-This allows for proper scalling of the learning rate and provides the perfect guess of learning rate at every iteration whenever the learning rate exceeds the forward stepping condition. Doing this 
+This allows for proper scalling of the learning rate and provides the perfect guess of learning rate at every iteration whenever the learning rate exceeds the forward stepping condition. Doing this will improve the convergence rate by many folds. See the example below.
+
+## How to use?
+1. Clone the repo at your desired location.
+```bash
+git clone
+```
+
+
+
 
 
 
