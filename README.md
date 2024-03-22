@@ -166,19 +166,6 @@ The true optimal is at 0.0 and {0.707106, -0.707106}. As can be seen, the number
 | Time           |5             | 90         |
 | Function Calls |35            | 199        |
 
-% Please add the following required packages to your document preamble:
-\usepackage{graphicx}
-\begin{table}[]
-\centering
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{lllll}
-Parameters       & My Algorithm & Classic GD &  &  \\
-Iterations       & 4            & 25         &  &  \\
-Time (micro-sec) & 5            & 90         &  &  \\
-Function Calls   & 35           & 199        &  & 
-\end{tabular}%
-}
-\end{table}
 
 ## Contribution
 Contributions are welcome and greatly appreciated. Whether you're fixing a bug, implementing a new feature, or improving documentation, your efforts contribute to making this project better for everyone. Before contributing, please take a moment to review the guidelines in the CONTRIBUTING.md file to ensure a smooth and effective collaboration process. Thank you for your support!
