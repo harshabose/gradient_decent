@@ -160,6 +160,9 @@ Time taken: 5 microseconds
 ```
 The true optimal is at 0.0 and {0.707106, -0.707106}. As can be seen, the number of iterations taken (even with a far initial guess) is 4. Compared to classic Gradient Decent which tool 300+ iterations for the same settings. This shows the clear advantage of the `Secant Method Scaling` technique. A pictographical representation of a classic gradient decent and my algorithm is given below:
 
+<img width="1141" alt="GD" src="https://github.com/harshabose/gradient_decent/assets/127072856/47eac3f3-0962-417b-b3fa-a5e21b7c2be6">
+
+
 | Parameters     | My Algorithm | Classic GD |
 | -------------- | ------------ | ---------- |
 | Initial Point  | {1.6, -1.2}  | {1.6, -1.2}|
