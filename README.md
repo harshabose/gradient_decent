@@ -15,7 +15,7 @@ Ax \leq B, \quad l \leq x \leq b
 
 ```math
 \begin{align}
-A = [a_{i,j}] \in \mathbb{R}^{mxn}
+A = [a_{i,j}] \in \mathbb{R}^{m \times n}
 \end{align}
 ```
 
