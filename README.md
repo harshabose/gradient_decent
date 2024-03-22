@@ -83,7 +83,7 @@ g(\alpha_{1}) = f(X + \alpha_{1} \nabla f) - f(X) = 0
 X + \alpha_{2} \nabla f \text{ is the mirror point}
 ```
 ```math
-\text{perfect guess } X_{new} = X + (\frac{\alpha_{2}}{2}) \nabla f
+\text{perfect guess } X_{new} = X + \left(\frac{\alpha_{2}}{2}\right( \nabla f
 ```
 
 This allows for proper scalling of the learning rate and provides the perfect guess of learning rate at every iteration whenever the learning rate exceeds the forward stepping condition. Doing this will improve the convergence rate by many folds. See the example below.
