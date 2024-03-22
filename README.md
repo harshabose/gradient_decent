@@ -30,7 +30,7 @@ Gradient Decent algorithms are usually considered lacking of proper scalling whe
 
 ```math
 \begin{align}
-X_{new} = X + \alpha * \nabla f
+X_{new} = X + \alpha \nabla f
 \end{align}
 ```
 
