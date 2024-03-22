@@ -69,7 +69,7 @@ g(\alpha) = f(X + \alpha \nabla f) - f(X)
 \text{where X is the current point and }X + \alpha \nabla f \text{ is the new point}
 ```
 ```math
-\text{find the second root of } \alpha \text{ in }g(\alpha)
+\text{find the second root of } g(\alpha)
 ```
 ```math
 X + \alpha_{2} \nabla f \text{ is the mirror point}
