@@ -162,6 +162,7 @@ The true optimal is at 0.0 and {0.707106, -0.707106}. As can be seen, the number
 
 | Parameters     | My Algorithm | Classic GD |
 | -------------- | ------------ | ---------- |
+| Initial Point  | {1.6, -1.2}  | {1.6, -1.2}|
 | Iterations     | 4            | 47         |
 | Time           | 5            | 59         |
 | Function Calls | 35           | 342        |
