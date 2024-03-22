@@ -117,6 +117,11 @@ int main () {
 ```
 Output with no compile-time optimisation: 
 ```bash
+iteration @0 with optimal val at 1.48774 with point at {1.6, -1.2}
+iteration @1 with optimal val at 0.013213 with point at {0.695668, -0.649016}
+iteration @2 with optimal val at 4.05672e-06 with point at {0.706601, -0.708027}
+iteration @3 with optimal val at 8.75034e-07 with point at {0.706751, -0.706773}
+
 GD CONVERGED with optimal point at: {0.706751, -0.706773}
 with optimal value: 8.75034e-07
 Time taken: 26 microseconds
