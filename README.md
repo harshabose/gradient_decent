@@ -111,6 +111,7 @@ git clone https://github.com/harshabose/gradient_decent.git
 auto gradient_operator = gd::gradient_decent<double, double, double>(bivarient_function, 1.6, -1.2);
 gradient_operator.perform_gradient_decent();
 ```
+**NOTE:** Requires C++20
 ## Example
 The following code uses a bechmark 3D exponential equation and has one minima at locations ${\sqrt{2}, -\sqrt{2}}$ and with a value of "0". 
 
