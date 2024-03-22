@@ -77,7 +77,7 @@ g(\alpha_{1}) = f(X + \alpha_{1} \nabla f) - f(X) = 0
 \text{where } \alpha_{1} \text{ is the current learning rate}
 ```
 ```math
-\text{find the second root of } g(\alpha)
+\text{find the second root (} \alpha_{2} \text{) of } g(\alpha)
 ```
 ```math
 X + \alpha_{2} \nabla f \text{ is the mirror point}
