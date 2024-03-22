@@ -63,7 +63,7 @@ When both facts are met, we can use secant method to find the mirror. This will 
 ```math
 \begin{align}
 g(\alpha) = f(X + \alpha \nabla f) - f(X)
-\text{find second root of \alpha}
+\text{find the second root of } \alpha
 \end{align}
 ```
 
