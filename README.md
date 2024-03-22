@@ -176,6 +176,56 @@ The true optimal at {0.707106, -0.707106} and {-0.707106, 0.707106} with optimal
   |tolerance       | 1e-3         | 1e-3       |
 
 
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-uca5{text-align:left;text-decoration:underline;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-uca5">Parameters</th>
+    <th class="tg-0lax">Classic GD</th>
+    <th class="tg-0lax">My GD Algorithm</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0lax">Initial Point</td>
+    <td class="tg-0lax">(1.6, -1.2}</td>
+    <td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none">(1.6, -1.2}</span></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Tolerance</td>
+    <td class="tg-0lax">1e-3</td>
+    <td class="tg-0lax">1e-3</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Iterations</td>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Time</td>
+    <td class="tg-0lax">5</td>
+    <td class="tg-0lax">59</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none">Function Calls</span></td>
+    <td class="tg-0lax">35</td>
+    <td class="tg-0lax">342</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none">Derivative Scaling?</span></td>
+    <td class="tg-0lax">off</td>
+    <td class="tg-0lax">off</td>
+  </tr>
+</tbody>
+</table>
 
 
 ## Contribution
