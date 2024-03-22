@@ -15,7 +15,7 @@ f:\;\;X^d \longrightarrow \mathbb{R}
 
 ```math
 \begin{align}
-A = [ \,a_{i,\,j}\,] \in \mathbb{R}^{m \times n}
+\text{where } A = [ \,a_{i,\,j}\,] \in \mathbb{R}^{m \times n}
 \end{align}
 ```
 
