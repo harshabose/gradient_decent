@@ -90,12 +90,12 @@ This allows for proper scaling of the learning rate to reflect the derivative se
 
 ## What are included?
 The gradient_decent class:
-- `**Finite Difference:**` was used to calculate the derivative, allowing for optimation of non-pure-mathematical "equations".
-- `**Secant Method scaling:**` can be turned off and a classic back-tracking methodology could be used instead.
-- `**Learning Rate Scaling:**` using sqrt ratio of current derivatives and the highest derivatives encountered (based on RMSprop) is provided. This allows gradual decrease of learning rate even without secant method scaling allowing for natural decling of learning rate. This could also be turned off.
-- `**Momentum based derivative rotation:**` is also introduced, where the current derivative vector at a point are rotated towards the weighted-average of the previous derivative vectors (based on heavy-ball gradient decent approach). This could also be turned off.
-- `**Support for Constraints:**` is also given which use a linear penalty function with a user defined slope (optional) to constraint the minimising operation.
-- `**Effecient Coding Paradigm:**` such as tempalted lambda and meta-programming were used to optimise the code to produce minimal memory and performance overhead. 
+- `Finite Difference:` was used to calculate the derivative, allowing for optimation of non-pure-mathematical "equations".
+- `Secant Method scaling:` can be turned off and a classic back-tracking methodology could be used instead.
+- `Learning Rate Scaling:` using sqrt ratio of current derivatives and the highest derivatives encountered (based on RMSprop) is provided. This allows gradual decrease of learning rate even without secant method scaling allowing for natural decling of learning rate. This could also be turned off.
+- `Momentum based derivative rotation:` is also introduced, where the current derivative vector at a point are rotated towards the weighted-average of the previous derivative vectors (based on heavy-ball gradient decent approach). This could also be turned off.
+- `Support for Constraints:` is also given which use a linear penalty function with a user defined slope (optional) to constraint the minimising operation.
+- `Effecient Coding Paradigm:` such as tempalted lambda and meta-programming were used to optimise the code to produce minimal memory and performance overhead. 
 
 ## How to use?
 1. Clone the repo at your desired location.
