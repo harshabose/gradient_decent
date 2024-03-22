@@ -66,6 +66,14 @@ g(\alpha) = f(X + \alpha \nabla f) - f(X)
 \end{align}
 ```
 ```math
+\begin{align}
+g(\alpha_{1}) = f(X + \alpha_{1} \nabla f) - f(X) = 0
+\end{align}
+```
+```math
+\text{where } \alpha_{1} \text{ is the current learning rate}
+```
+```math
 \text{where X is the current point and }X + \alpha \nabla f \text{ is the new point}
 ```
 ```math
