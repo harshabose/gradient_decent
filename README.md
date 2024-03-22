@@ -15,6 +15,12 @@ Ax \leq B, \quad l \leq x \leq b
 
 ```math
 \begin{align}
+A = [a_(i,j)] \in \mathbb{R}^(mxn)
+\end{align}
+```
+
+```math
+\begin{align}
 \min(f(X))
 \end{align}
 
