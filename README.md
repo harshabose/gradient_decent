@@ -176,6 +176,14 @@ The true optimal at {0.707106, -0.707106} and {-0.707106, 0.707106} with optimal
   |tolerance       | 1e-3         | 1e-3       |
 
 
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-uca5">Parameters</th>
+    <th class="tg-0lax">Classic GD</th>
+    <th class="tg-0lax">My GD Algorithm</th>
+  </tr>
+</thead>
 <tbody>
   <tr>
     <td class="tg-0lax">Initial Point</td>
