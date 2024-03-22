@@ -62,7 +62,8 @@ X_{new}, \, X \in \mathbb{R}^d \quad \nabla f \in \mathbb{R}
 When both facts are met, we can use secant method to find the mirror. This will give us an accurate scale of $\alpha$ relating derivative set and original equation set. Now, with the scalling known, we can assume that the minima might be located at the $\alpha / 2$ position in the direction of derivative vector. A mathematical representation is given below:
 ```math
 \begin{align}
-X_{new}, \, X \in \mathbb{R}^d \quad \nabla f \in \mathbb{R}
+g(\alpha) = f(X + \alpha \nabla f) - f(X)
+find second root of \alpha 
 \end{align}
 ```
 
