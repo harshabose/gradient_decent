@@ -176,7 +176,7 @@ The true optimal at {0.707106, -0.707106} and {-0.707106, 0.707106} with optimal
   |tolerance       | 1e-3         | 1e-3       |
 
 
-<div style="margin: auto; width: fit-content;">
+<div align="center">
   <table class="tg">
     <thead>
       <tr>
