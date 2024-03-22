@@ -114,11 +114,13 @@ gradient_operator.perform_gradient_decent();
 ```
 **NOTE:** Requires C++20
 ## Example
-The following code uses a bechmark 3D exponential equation and has two minima at locations ${\sqrt{2}, -\sqrt{2}}$ and ${-\sqrt{2}, \sqrt{2}}$ with a value of "0". 
+The following code uses a bechmark 3D exponential equation and has two minima at locations ${\sqrt{2}, -\sqrt{2}}$ and ${-\sqrt{2}, \sqrt{2}}$ with a value of "0". <br><br>
 
 <p align="center">
   <img src="https://github.com/harshabose/gradient_decent/assets/127072856/299edffc-cba9-4988-8a0f-4b4397cb6b07" alt="bivarient">
 </p>
+
+<br>
 
 ```cpp
 #include <iostream>
