@@ -66,7 +66,16 @@ This allows for proper scalling of the learning rate and provides the perfect gu
 ## How to use?
 1. Clone the repo at your desired location.
 ```bash
-git clone
+git clone https://github.com/harshabose/gradient_decent.git
+```
+2. This is a header-only file, just include in you code as below:
+```cpp
+#include "gradient_decent.h"
+```
+3. Create an instance of the class gradient_decent as below and set the parameters as desired and run:
+```cpp
+auto gradient_operator = gd::gradient_decent<double, double, double>(bivarient_function, 1.6, -1.2);
+gradient_operator.perform_gradient_decent();
 ```
 
 
