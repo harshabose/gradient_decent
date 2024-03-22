@@ -3,8 +3,7 @@ Gradient Decent with Secant Method scaling. Faster, Robust and Smarter
 
 ```math
 \begin{align}
-f(x) &= x^2 \\
-g(x) &= \sin(x)
+min(f(X)) \forall \in (\R)^d
 \end{align}
 ```
 
