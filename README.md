@@ -50,11 +50,9 @@ X_{new}, \, X \in \mathbb{R}^d \quad \nabla f \in \mathbb{R}
 ```
 
 ## Secant Method Scalling
-**Fact 1:**  
-As the gradient decent progress, there will come a point where the step taken eventually skips past the optimal value (assuming large enough step is provided). In such cases, most algorithms use back-tracking to reduce the step to find the next best point which will reduce the $f$ value.
+- **Fact 1:**  As the gradient decent progress, there will come a point where the step taken eventually skips past the optimal value (assuming large enough step is provided). In such cases, most algorithms use back-tracking to reduce the step to find the next best point which will reduce the $f$ value.
 
-**Fact 2:**  
-When Fact 1 is met, there exists another point, in the direction of current gradient, which is equal to current optimal value.
+- **Fact 2:**  When Fact 1 is met, there exists another point, in the direction of current gradient, which is equal to current optimal value.
 
 When both facts are met, we can use secant method to find the point mentioned in Fact 2. This will give us an accurate scale of $\alpha$ relating derivative set and original equation set. Now, with the scalling know, we can assume that the minima might be located at the $\alpha / 2$ position.
 
