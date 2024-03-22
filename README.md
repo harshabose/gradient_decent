@@ -127,4 +127,4 @@ GD CONVERGED with optimal point at: {0.706751, -0.706773}
 with optimal value: 8.75034e-07
 Time taken: 26 microseconds
 ```
-The true optimal is at 0.0 and {0.707106, -0.707106}. As can be seen, the number of iterations taken (even with a far initial guess) is 4. Compared to classic Gradient Decent which tool 300+ iterations for the same settings. This shows the clear advantage of the `Secant Method Scalling` technique
+The true optimal is at 0.0 and {0.707106, -0.707106}. As can be seen, the number of iterations taken (even with a far initial guess) is 4. Compared to classic Gradient Decent which tool 300+ iterations for the same settings. This shows the clear advantage of the `Secant Method Scalling` technique. A pictographical representation of the classic Gradient Decent and my version is given above.
