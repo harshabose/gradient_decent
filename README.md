@@ -160,4 +160,4 @@ Time taken: 26 microseconds
 The true optimal is at 0.0 and {0.707106, -0.707106}. As can be seen, the number of iterations taken (even with a far initial guess) is 4. Compared to classic Gradient Decent which tool 300+ iterations for the same settings. This shows the clear advantage of the `Secant Method Scaling` technique. A pictographical representation of a classic gradient decent and my algorithm is given below:
 
 ## Contribution
-
+Contributions are welcome and greatly appreciated. Whether you're fixing a bug, implementing a new feature, or improving documentation, your efforts contribute to making this project better for everyone. Before contributing, please take a moment to review the guidelines in the CONTRIBUTING.md file to ensure a smooth and effective collaboration process. Thank you for your support!
