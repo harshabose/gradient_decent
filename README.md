@@ -26,7 +26,7 @@ f:\;\;\mathbb{R}^d \longrightarrow \mathbb{R}
 \min(f)
 \end{align}
 ```
-Gradient Decent algorithms are usually lacking of proper scalling when findind then next optimal point (See equation below). The learning rate ($\alpha$) is not proerly scalled to convert the differential set to the original equation set. Most Gradient Decent algorithms solve this issue by taking a constant learning rate or reduce by a factor the rate every iteration assuming a constant learning rate at the first iteration. In both cases, they are assumed. To, solve this, I have implmented a **Secant Method** based scalling algorithm which aims to find the scale of the learning rate by relating the differential set to the original equation set.
+Gradient Decent algorithms are usually lacking of proper scalling when findind then next optimal point (See equation below). The learning rate ($\alpha$) is not proerly scalled to convert the derivatives set to the original equation set. Most Gradient Decent algorithms solve this issue by taking a constant learning rate or reduce by a factor the rate every iteration assuming a constant learning rate at the first iteration. In both cases, they are assumed. To, solve this, I have implmented a **Secant Method** based scalling algorithm which aims to find the scale of the learning rate by relating the differential set to the original equation set.
 
 ```math
 \begin{align}
