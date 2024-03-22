@@ -59,7 +59,7 @@ X_{new}\,, \, X \in \mathbb{R}^d \quad \nabla f \in \mathbb{R}
 
 - **Fact 2:**  When Fact 1 is met, there exists another point (lets call this mirror point), in the direction of current gradient, which is equal to current optimal value.
 
-When both facts are met, we can use secant method to find the mirror. This will give us an accurate scale of $\alpha$ relating derivative set and original equation set. Now, with the scalling known, we can assume that the minima might be located at the $\alpha / 2$ position in the direction of derivative vector. A mathematical representation is given below:
+When both facts are met, we can use secant method to find the mirror. This will give us an accurate scale of $\alpha$ relating derivative set and original equation set. Now, with the scalling known, we can assume that the minima might be located at the $\left(\alpha / 2\right)$ position in the direction of derivative vector. A mathematical representation is given below:
 ```math
 \begin{align}
 g(\alpha) = f(X + \alpha \nabla f) - f(X)
