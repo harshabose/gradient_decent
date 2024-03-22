@@ -116,6 +116,10 @@ gradient_operator.perform_gradient_decent();
 ## Example
 The following code uses a bechmark 3D exponential equation and has two minima at locations ${\sqrt{2}, -\sqrt{2}}$ and ${-\sqrt{2}, \sqrt{2}}$ with a value of "0". 
 
+<p align="center">
+  <img src="https://github.com/harshabose/gradient_decent/assets/127072856/299edffc-cba9-4988-8a0f-4b4397cb6b07" alt="bivarient">
+</p>
+
 ```cpp
 #include <iostream>
 #include <chrono>
@@ -158,11 +162,7 @@ GD CONVERGED with optimal point at: {0.706751, -0.706773}
 with optimal value: 8.75034e-07
 Time taken: 5 microseconds
 ```
-As can be seen, the number of iterations taken (even with a far initial guess) is just 4. Compared to classic Gradient Decent which took 47 iterations for the same settings. This shows the clear advantage of the `Secant Method Scaling` technique. A pictographical representation of a classic gradient decent and my algorithm is given below: <br><br>
-
-<p align="center">
-  <img src="https://github.com/harshabose/gradient_decent/assets/127072856/299edffc-cba9-4988-8a0f-4b4397cb6b07" alt="bivarient">
-</p>
+As can be seen, the number of iterations taken (even with a far initial guess) is just 4. Compared to classic Gradient Decent which took 47 iterations for the same settings. This shows the clear advantage of the `Secant Method Scaling` technique. A graphical representation of the classic gradient decent and my algorithm is given below: <br><br>
 
 <br>
 
