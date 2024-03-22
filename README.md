@@ -9,7 +9,7 @@ f:\;\;X^d \longrightarrow \mathbb{R}
 
 ```math
 \begin{align}
-subject to Ax \leq B, \quad l \leq x \leq b
+\text{subject to } Ax \leq B, \quad l \leq x \leq b
 \end{align}
 ```
 
