@@ -142,8 +142,8 @@ int main () {
   auto start = std::chrono::high_resolution_clock::now();
   gradient_operator->perform_gradient_decent();
   auto end = std::chrono::high_resolution_clock::now();
-  auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 
+  auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
   std::cout << "Time taken: " << duration.count() << " seconds" << std::endl;
 }
 ```
