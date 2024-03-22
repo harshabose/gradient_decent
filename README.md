@@ -26,12 +26,18 @@ f:\;\;X^d \longrightarrow \mathbb{R}
 \min(f)
 \end{align}
 ```
-Gradient Decent algorithms are usually considered lacking of proper scalling when findind then next point (See equation below). The learning rate $\alpha$ is not proerly scalled to convert the differential set to the original equation set.
+Gradient Decent algorithms are usually lacking of proper scalling when findind then next optimal point (See equation below). The learning rate ($\alpha$) is not proerly scalled to convert the differential set to the original equation set.
 
 ```math
 \begin{align}
 X_{new} = X + \alpha \nabla f
 \end{align}
 ```
+```math
+\begin{align}
+X_{new}, \, X \in 
+\end{align}
+```
+
 
 
