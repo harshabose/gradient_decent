@@ -84,7 +84,7 @@ namespace meta_types {
      * This trait checks if two tuple types are the same after removing all qualifiers.
      */
     template <class tupleType1_, class tupleType2_>
-        static constexpr bool are_tuples_same_v = std::is_same<meta_types::remove_all_qual<tupleType1_>, meta_types::remove_all_qual<tupleType2_>>::value_type;
+        static constexpr bool are_tuples_same_v = std::is_same<meta_types::remove_all_qual<tupleType1_>, meta_types::remove_all_qual<tupleType2_>>::value;
 
     // (** removed unnecessary types and checks...)
 }
