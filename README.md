@@ -90,6 +90,7 @@ This allows for proper scaling of the learning rate to reflect the derivative se
 
 ## What are included?
 The gradient_decent class:
+- `Detailed Doxygen Documentation:` are written on all classes, structs and other utilities and assets. Hover over any method to see the documentation.
 - `Finite Difference:` was used to calculate the derivative, allowing for optimation of non-pure-mathematical "equations".
 - `Secant Method scaling:` can be turned off and a classic back-tracking methodology could be used instead.
 - `Learning Rate Scaling:` using square root of ratio of current derivatives and the highest derivatives encountered (based on RMSprop) is used to reduce the learning as the iterations progress. This allows gradual decrease of learning rate even without secant method scaling allowing for natural decling of learning rate. This could also be turned off.
