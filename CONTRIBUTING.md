@@ -39,6 +39,6 @@ If you encounter any bugs or have ideas for new features, please open an issue o
 
 ## License
 
-By contributing to this project, you agree that your contributions will be licensed under the project's [LICENSE](link-to-license-file).
+By contributing to this project, you agree that your contributions will be licensed under the project's [LICENSE](https://github.com/harshabose/gradient_decent/blob/5268c3d5b9ba934e5c8205e32da029b6563549a0/LICENSE).
 
 Thank you for your interest in contributing to our project! If you have any questions or need assistance, feel free to reach out to us.
