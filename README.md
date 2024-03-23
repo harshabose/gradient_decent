@@ -144,6 +144,7 @@ int main () {
   gradient_operator->add_lower_bounds(lower_bounds);
   gradient_operator->add_upper_bounds(upper_bounds);
   gradient_operator->set_tolerance(1e-3);
+//        gradient_operator->toggle_classic_gradient_algo();  // uncomment this to use classic GD
 
   auto start = std::chrono::high_resolution_clock::now();
   gradient_operator->perform_gradient_decent();
