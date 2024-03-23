@@ -1,11 +1,30 @@
-//
-// Created by Harshavardhan Karnati on 14/03/2024.
-//
+/**
+ * @file gradient_decent.h
+ * @brief Header file defining the gradient_decent and function wrapper classes for new GD approach using
+ * secant method scaling of learning rate.
+ *
+ * @author Harshavardhan Karnati
+ * @date 07/03/2024
+ */
 
 #ifndef CONCEPTUAL_GRADIENT_DECENT_H
 #define CONCEPTUAL_GRADIENT_DECENT_H
 
-#define VERBOSITY 1
+
+/**
+ * @brief Defines macros for conditional verbose printing.
+ *
+ * This set of macros defines conditional verbose printing functionality based on the value of the VERBOSITY
+ * preprocessor macro. It allows printing debug messages to the standard output stream when VERBOSITY is enabled.
+ *
+ * @note
+ * - The macros include VERBOSE_PRINT, VERBOSE_PRINT_, and _VERBOSE_PRINT_, which print messages with or without
+ *   line breaks based on the VERBOSITY setting.
+ * - When VERBOSITY is enabled (VERBOSITY = 1), debug messages are printed to the standard output stream.
+ * - When VERBOSITY is disabled (VERBOSITY = 0), the macros expand to empty statements, avoiding any overhead
+ *   in production code.
+ */
+#define VERBOSITY 0
 
 #if VERBOSITY
 #define VERBOSE_PRINT(x)  do { \
@@ -630,7 +649,30 @@ namespace gd {
          */
         std::size_t func_call_count = 0;
 
-
+        /**
+         * @brief Evaluates the objective function at the specified arguments.
+         *
+         * This method evaluates the objective function at the specified arguments provided as a tuple.
+         * It increments the function call count and, if constraints are enabled, adjusts the objective
+         * function value based on the penalty imposed by the constraint manager.
+         *
+         * @tparam tupleType The type of the tuple containing arguments.
+         * @param IN_ARGS The tuple containing arguments at which the function is evaluated.
+         * @return The result of evaluating the objective function at the specified arguments.
+         *
+         * @details
+         * The eval_func_at method increments the function call count to keep track of the number of times
+         * the objective function is called during optimisation. If constraints are enabled, it retrieves
+         * the penalty from the constraint manager based on the provided arguments and adds it to the
+         * objective function value. The adjusted value is then returned as the result. If constraints are
+         * not enabled, the objective function is evaluated without any adjustments and the result is returned.
+         *
+         * @note
+         * <ul>
+         * <li> This method is noexcept, ensuring that it does not throw exceptions allowing for compile-time optimisation
+         * <li> The provided arguments are forwarded to the objective function for evaluation.
+         * </ul>
+         */
         template<class tupleType>
         returnType eval_func_at (tupleType&& IN_ARGS) noexcept {
             this->func_call_count++;
@@ -641,6 +683,31 @@ namespace gd {
             return this->function->eval_func_at(std::forward<tupleType>(IN_ARGS));
         }
 
+        /**
+         * @brief Performs a step forward using the Secant Method in the gradient descent algorithm.
+         *
+         * This method implements a step forward using the Secant Method in the gradient descent algorithm.
+         * It adjusts the optimal point based on the next point created with bounds projection, evaluates
+         * the objective function at the adjusted point, and updates the learning rate and optimal value
+         * based on the Secant Method. If the updated optimal value is lower than the current optimal value,
+         * the current tolerance is updated, and the process continues.
+         *
+         * @param IN_POINT The current point at which the step forward is performed.
+         *
+         * @details
+         * The step_forward_with_secant_method method performs a step forward in the optimisation process
+         * using the Secant Method. It first creates the next point using bounds projection and evaluates
+         * the objective function at that point. If the objective function value at the new point is greater
+         * than the current optimal value, the learning rate is adjusted using the Secant Method, and the
+         * process is repeated with the updated learning rate. If the updated optimal value is lower than
+         * the current optimal value, the current tolerance is updated, and the process continues.
+         *
+         * @note
+         * - This method is noexcept, ensuring that it does not throw exceptions.
+         * - The Secant Method is used to dynamically adjust the learning rate during optimisation.
+         * - The bounds_projection method adjusts the optimal point to ensure it falls within specified bounds.
+         * - The eval_func_at method is used to evaluate the objective function at different points.
+         */
         void step_forward_with_secant_method (std::tuple<argType...> IN_POINT) noexcept {
             this->optimal_point = std::move(this->bounds_projection(this->create_next_point(IN_POINT, indices_for_args{}), indices_for_args{}));
             returnType test_optimal = this->eval_func_at(this->optimal_point);
@@ -656,6 +723,30 @@ namespace gd {
             }
         }
 
+        /**
+         * @brief Performs a step forward using the backtracking algorithm in the gradient descent.
+         *
+         * This method implements a step forward using the backtracking algorithm in the gradient descent.
+         * It repeatedly adjusts the optimal point using bounds projection, evaluates the objective function
+         * at the adjusted point, and updates the learning rate based on backtracking. The process continues
+         * until the objective function value decreases or a maximum number of iterations is reached.
+         *
+         * @param IN_POINT The current point at which the step forward is performed.
+         *
+         * @details
+         * The step_forward_with_back_tracking method performs a step forward in the optimisation process
+         * using the backtracking algorithm. It initializes iterative counters and maximum iteration limits
+         * to control the backtracking process. It repeatedly adjusts the optimal point using bounds projection,
+         * evaluates the objective function at the adjusted point, and checks if the objective function value
+         * decreases. If the objective function value decreases, the current tolerance is updated, and the process
+         * stops. If the maximum iteration limit is reached without finding a suitable point, an exception is thrown.
+         *
+         * @note
+         * - This method throws a runtime_error if it cannot find the next point using the backtracking algorithm.
+         * - The backtracking algorithm adjusts the learning rate to ensure convergence towards the optimal point.
+         * - The bounds_projection method adjusts the optimal point to ensure it falls within specified bounds.
+         * - The eval_func_at method is used to evaluate the objective function at different points.
+         */
         void step_forward_with_back_tracking (std::tuple<argType...> IN_POINT) {
             std::size_t iterative_count = 0;
             std::size_t iterative_count_max = 1000;
@@ -678,6 +769,18 @@ namespace gd {
             }
         }
 
+        /**
+         * @brief Helper function to set the highest derivatives for a specific index.
+         *
+         * This method is a helper function used by the set_high_derivatives method to set the highest derivatives
+         * for a specific index in the tuple of derivatives. It compares the absolute value of the derivative at
+         * index 'i' with the absolute value of the corresponding derivative in the derivative_high tuple. If the
+         * absolute value of the derivative at index 'i' is greater than the absolute value of the corresponding
+         * derivative in the derivative_high tuple, it updates the learning rate to 1.0 and updates the corresponding
+         * derivative in the derivative_high tuple.
+         *
+         * @tparam i The index of the derivative.
+         */
         template <std::size_t i>
         void set_high_derivatives_helper () {
             if (std::abs(std::get<i>(this->derivatives)) > std::abs(std::get<i>(this->derivative_high))) {
@@ -686,12 +789,33 @@ namespace gd {
             }
         }
 
+        /**
+         * @brief Sets the highest derivatives for all indices specified in the index sequence.
+         *
+         * This method sets the highest derivatives for all indices specified in the index sequence 'i_seq'.
+         * It calls the set_high_derivatives_helper method for each index in the sequence.
+         *
+         * @tparam i The indices for which the highest derivatives are set.
+         * @param i_seq The index sequence specifying the indices for which the highest derivatives are set.
+         */
         template <std::size_t... i>
         void set_high_derivatives (std::index_sequence<i...>) {
             (this->set_high_derivatives_helper<i>(),...);
         }
 
-
+        /**
+         * @brief Helper function to calculate derivatives at specified indices.
+         *
+         * This method calculates the derivatives at the specified indices for the given tuple of arguments.
+         * It uses a finite difference method to approximate the derivatives. If an exception occurs during
+         * calculation, it falls back to using the backward finite difference method. The calculated derivatives
+         * are then scaled if derivative scaling is enabled.
+         *
+         * @tparam tupleType The type of the tuple containing the arguments.
+         * @tparam i The indices at which derivatives are calculated.
+         * @param IN_TUPLE The tuple of arguments.
+         * @return A tuple containing the calculated derivatives at the specified indices.
+         */
         template<class tupleType, std::size_t... i>
         auto calculate_derivatives_at_helper (tupleType &&IN_TUPLE, std::index_sequence<i...>) noexcept {
             auto find_derivative_at = [this] <std::size_t i_, std::size_t... index> (tupleType &&IN_TUPLE_, std::index_sequence<index...>) -> meta_types::tuple_args_type_at<i_, tupleType> {
@@ -711,6 +835,16 @@ namespace gd {
             return std::make_tuple(find_derivative_at.template operator()<i>(std::forward<tupleType>(IN_TUPLE), indices_for_args{})...);
         }
 
+        /**
+         * @brief Calculates derivatives at the specified point.
+         *
+         * This method calculates the derivatives at the specified point using the finite difference method.
+         * It then sets the highest derivatives and scales the derivatives if derivative scaling is enabled.
+         *
+         * @tparam tupleType The type of the tuple containing the point coordinates.
+         * @param IN_POINT The point at which derivatives are calculated.
+         * @return A tuple containing the calculated derivatives.
+         */
         template<class tupleType>
         std::tuple<argType...> calculate_derivatives_at (tupleType&& IN_POINT) {
             this->derivatives = this->calculate_derivatives_at_helper(std::forward<tupleType>(IN_POINT), indices_for_args{});
@@ -718,52 +852,139 @@ namespace gd {
             if (this->use_scaling) this->scale(this->step_scales.data(), indices_for_args{});
             return this->derivatives;
         }
-        
+
+        /**
+         * @brief Projects a point onto the bounds defined by lower and upper bounds.
+         *
+         * This method projects each coordinate of the input point onto the bounds defined by the lower
+         * and upper bounds. If a coordinate is outside the bounds, it is replaced by the corresponding
+         * bound. The projection is performed for each coordinate specified by the index sequence.
+         *
+         * @tparam i The indices of coordinates to project.
+         * @param IN_POINT The input point to be projected.
+         * @return The projected point after bounds projection.
+         */
         template <std::size_t... i>
         std::tuple<argType...>&& bounds_projection (std::tuple<argType...>&& IN_POINT, std::index_sequence<i...>) noexcept {
+            // Project each coordinate onto the bounds if IN_POINT is outside of bounds
             (((std::get<i>(IN_POINT) < std::get<i>(this->lower_bounds)) ? std::get<i>(IN_POINT) = std::get<i>(this->lower_bounds) : std::get<i>(IN_POINT) = std::get<i>(IN_POINT)),...);
             (((std::get<i>(IN_POINT) > std::get<i>(this->upper_bounds)) ? std::get<i>(IN_POINT) = std::get<i>(this->upper_bounds) : std::get<i>(IN_POINT) = std::get<i>(IN_POINT)),...);
             return std::forward<std::tuple<argType...>&&>(IN_POINT);
         }
-        
+
+        /**
+         * @brief Checks if the current optimal point lies within the defined bounds.
+         *
+         * This method checks if each coordinate of the current optimal point lies within the bounds
+         * defined by the lower and upper bounds. It returns true if all coordinates are within bounds,
+         * and false otherwise. The check is performed for each coordinate specified by the index sequence.
+         *
+         * @tparam i The indices of coordinates to check.
+         * @return True if the optimal point is within bounds, false otherwise.
+         */
         template <std::size_t... i>
         bool check_point_bounds (std::index_sequence<i...>) {
+            // Check if each coordinate is within bounds
             return ((std::get<i>(this->optimal_point) < std::get<i>(this->lower_bounds)) && ...) &&
                    ((std::get<i>(this->optimal_point) > std::get<i>(this->upper_bounds)) && ...);
         }
 
+        /**
+         * @brief Prints the elements of a tuple to the verbose output stream.
+         *
+         * This method prints the elements of the specified tuple to the verbose output stream, enclosed
+         * within curly braces. The printing is conditional based on the VERBOSITY flag. If VERBOSITY is
+         * enabled, the elements are printed; otherwise, no action is taken.
+         *
+         * @tparam tupleType The type of the tuple containing elements to be printed.
+         * @tparam i The indices of elements to print.
+         * @param IN_TUPLE The tuple containing elements to be printed.
+         */
         template<class tupleType, std::size_t... i>
         void verbose_print_tuple (tupleType&& IN_TUPLE, std::index_sequence<i...>) {
 #if VERBOSITY
-            _VERBOSE_PRINT_("{");
+            _VERBOSE_PRINT_("{");   // Start of tuple printing
+            // Lambda function to print elements of the tuple
             auto print_tuple_at = [] (tupleType&& IN_TUPLE_) -> void {
+                // Print each element of the tuple, separated by commas
                 ((std::cout << (i == 0? "" : ", ") << std::get<i>(IN_TUPLE_)),...);
             };
-                print_tuple_at(std::forward<tupleType>(IN_TUPLE));
-            VERBOSE_PRINT("}");
+            // Call the lambda function to print elements of the tuple
+            print_tuple_at(std::forward<tupleType>(IN_TUPLE));
+            VERBOSE_PRINT("}");     // End of tuple printing
 #endif
         }
 
+        /**
+         * @brief Calculates the Euclidean distance between two tuples.
+         *
+         * This method calculates the Euclidean distance between two tuples of the same type,
+         * element-wise. The distance is computed as the square root of the sum of squared
+         * differences between corresponding elements in the tuples.
+         *
+         * @tparam i Indices of elements in the tuples.
+         * @param IN_FIRST_TUPLE The first tuple.
+         * @param IN_SEC_TUPLE The second tuple.
+         * @return The Euclidean distance between the two tuples.
+         */
         template <std::size_t... i>
         auto get_distance_tuple (std::tuple<argType...> &IN_FIRST_TUPLE, std::tuple<argType...> &IN_SEC_TUPLE, std::index_sequence<i...>) {
             auto sum = (((std::get<i>(IN_FIRST_TUPLE) - std::get<i>(IN_SEC_TUPLE)) * (std::get<i>(IN_FIRST_TUPLE) - std::get<i>(IN_SEC_TUPLE))) + ...);
             return std::sqrt(sum);
         }
 
+        /**
+         * @brief Calculates the tolerance value.
+         *
+         * This method calculates the tolerance value by adding the current tolerance to
+         * the Euclidean distance between the current optimal point and the old optimal point.
+         *
+         * @return The calculated tolerance value.
+         */
         returnType get_tolerance () {
             returnType tol = this->current_tolerance + this->get_distance_tuple(this->optimal_point, this->old_optimal_point, indices_for_args{});
             return tol;
         }
 
+        /**
+         * @brief Creates the next point based on the current point and derivatives.
+         *
+         * This method calculates the coordinates of the next point based on the current point
+         * and the derivatives. The new point is computed using the gradient descent update rule.
+         *
+         * @tparam i Indices of elements in the tuples.
+         * @param IN_POINT The current point.
+         * @return The next point.
+         */
         template <std::size_t... i>
         std::tuple<argType...> create_next_point (const std::tuple<argType...> &IN_POINT, std::index_sequence<i...>) noexcept {
             return std::move(std::make_tuple((std::get<i>(IN_POINT) - std::get<i>(this->derivatives) * this->learning_rate * this->step_scales.at(i))...));
         };
 
+        /**
+         * @brief Scales a given value using a scaling factor.
+         *
+         * This function scales a given value using a scaling factor. It computes the square
+         * root of the absolute value of the ratio of the input value to the scaling factor.
+         *
+         * @param IN_X The value to be scaled.
+         * @param IN_FACTOR The scaling factor.
+         * @return The scaled value.
+         */
         returnType scale_function (const returnType IN_X, const returnType IN_FACTOR) {
             return std::sqrt(std::abs(IN_X / IN_FACTOR));
         }
 
+        /**
+         * @brief Scales an array of values based on derivative magnitudes.
+         *
+         * This method scales an array of values based on the magnitudes of derivatives. It
+         * adjusts the scaling factor for each element of the array according to the derivative
+         * magnitude and the highest derivative magnitude encountered so far.
+         *
+         * @tparam i Indices of elements in the array.
+         * @param IN_TO_SCALE Pointer to the array to be scaled.
+         */
         template <std::size_t... i>
         void scale (returnType* IN_TO_SCALE, std::index_sequence<i...>) {
             if (!(this->first_iteration_settings)) {
@@ -772,6 +993,35 @@ namespace gd {
             }
         }
 
+        /**
+         * @brief Computes the learning rate adjustment using the Secant Method.
+         *
+         * This method computes the adjustment of the learning rate using the Secant Method
+         * to optimise the gradient descent algorithm. It finds the learning rate which relates the
+         * derivative set space to the objective function variable set space. It iteratively calculates
+         * the new learning rate based on the current and previous learning rates, and the corresponding
+         * objective function values. The process continues until the convergence criterion is met or until
+         * the maximum number of iterations is reached.
+         *
+         * @param IN_CURRENT_VAL The current value of the objective function.
+         * @param IN_REQUIRED_VAL The required value of the objective function.
+         * @return The adjusted learning rate computed using the Secant Method.
+         *
+         * @details
+         * The secant_learning_rate_scaling method adjusts the learning rate used in the gradient descent
+         * algorithm based on the Secant Method. It dynamically updates the learning rate to achieve convergence
+         * to the optimal solution. The method iteratively computes the new learning rate by interpolating between
+         * the current and previous learning rates, based on the corresponding objective function values. This process
+         * continues until the difference between successive learning rates falls below a predefined threshold or until
+         * the maximum number of iterations is reached.
+         *
+         * @note
+         * <ul>
+         * <li> This method is noexcept, ensuring that it does not throw exceptions.
+         * <li> The Secant Method is a root-finding algorithm used to approximate roots of a real-valued function.
+         * <li> The computed learning rate adjustment helps in optimising the gradient descent algorithm's convergence.
+         * </ul>
+         */
         returnType secant_learning_rate_scaling (returnType IN_CURRENT_VAL, const returnType IN_REQUIRED_VAL) noexcept {
 
             returnType current_rate = 0.0;
