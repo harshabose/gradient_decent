@@ -26,7 +26,8 @@ f:\;\;\mathbb{R}^d \longrightarrow \mathbb{R}
 \min(f)
 \end{align}
 ```
-Gradient Decent algorithms are usually lacking of proper scaling when findind then next optimal point (See equation below). The learning rate ($\alpha$) is not proerly scalled to convert the derivatives set to the original equation set. Most Gradient Decent algorithms solve this issue by taking a constant learning rate and reduce by a factor the rate every iteration. This leads to excessive or limited forward. The user is given the arduous task of providing the nominal learning rate. Predicting this learning step has its own complexity. To alleviate this responsibility from the user, I have implmented a `Secant Method` based scaling algorithm which aims to find the the learning rate by relating the differential set to the original equation set.
+
+Gradient Descent algorithms often lack proper scaling when determining the next optimal point (See equation below). The learning rate ($\alpha$) is not properly scaled to convert the derivatives set into the objective variables set. Many Gradient Descent algorithms attempt to address this issue by using a constant learning rate and reducing it by a factor after each iteration, or by employing back-tracking algorithms. However, these approaches often result in poor convergence and consequently, a high iteration count. Users are burdened with the arduous responsibility of providing the optimal learning rate to strike a balance between a sufficiently large step and rapid convergence. Predicting this learning step adds complexity. To alleviate this burden from the user, I have implemented a `Secant Method-based scaling algorithm`, which aims to find the learning rate by relating the differential set to the objective variables set.
 
 ```math
 \begin{align}
@@ -55,11 +56,12 @@ X_{new}\,, \, X \in \mathbb{R}^d \quad \nabla f \in \mathbb{R}
 ```
 
 ### Secant Method Scaling
-- **Fact 1:**  As the gradient decent progress, there will come a point where the step taken eventually skips past the optimal value (assuming large enough step is provided). In such cases, most algorithms use back-tracking to reduce the step to find the next best point which will reduce the $f$ value.
+- **Fact 1:**  As the gradient descent progresses, there comes a point where the step taken eventually overshoots the optimal value (assuming a large enough step is provided). In such cases, most algorithms use back-tracking to reduce the step size to find the next best point to find the next best value which reduces the objective function $f$.
 
-- **Fact 2:**  When Fact 1 is met, there exists another point (lets call this mirror point), in the direction of current gradient, which is equal to current optimal value.
+- **Fact 2:**  When Fact 1 is met, there exists another point (let's call this the mirror point) in the direction of the current gradient that is equal to the current optimal value.
 
-When both facts are met, we can use secant method to find the mirror. This will give us an accurate scale of $\alpha$ relating derivative set and original equation set. Now, with the scaling known, we can assume that the minima might be located at the $\left(\alpha / 2\right)$ position in the direction of derivative vector. A mathematical representation is given below:
+When both facts are met, we can use the secant method to find the mirror point. This will give us an accurate scale of $\alpha$, relating the derivative set to the objective variables set. Now, with the scaling known, we can assume that the minimum might be located at a position $\left(\alpha / 2\right)$ in the direction of the derivative vector. A mathematical representation is provided below:
+
 ```math
 \begin{align}
 g(\alpha) = f(X + \alpha \nabla f) - f(X)
@@ -86,36 +88,36 @@ X + \alpha_{2} \nabla f \text{ is the mirror point}
 \text{perfect guess } X_{new} = X + \left(\frac{\alpha_{2}}{2}\right) \nabla f
 ```
 
-This allows for proper scaling of the learning rate to reflect the derivative set onto original equation set and provide the perfect guess of learning rate at every iteration whenever the learning rate exceeds the forward stepping condition. Doing this will improve the convergence rate by many folds. See the example below.
+This enables proper scaling of the learning rate to map the derivative set onto the original equation set and provide an optimal estimate of the learning rate at each iteration whenever the learning rate exceeds the forward stepping condition. Implementing this novel approach will significantly improve the convergence rate. See the example given below.
 
 ## What are included?
 The gradient_decent class:
-- `Detailed Doxygen Documentation:` are written on all classes, structs and other utilities and assets. Hover over any method to see the documentation.
-- `Finite Difference:` was used to calculate the derivative, allowing for optimation of non-pure-mathematical "equations".
-- `Secant Method scaling:` can be turned off and a classic back-tracking methodology could be used instead.
-- `Learning Rate Scaling:` using square root of ratio of current derivatives and the highest derivatives encountered (based on RMSprop) is used to reduce the learning as the iterations progress. This allows gradual decrease of learning rate even without secant method scaling allowing for natural decling of learning rate. This could also be turned off.
-- `Momentum based derivative rotation:` is also introduced, where the current derivative vector at a point are rotated towards the weighted-average of the previous derivative vectors (based on heavy-ball gradient decent approach). This could also be turned off. (\** to be added)
-- `Supports for multi-dimensional:` problems is given to support any number of dimensions.
-- `Support for Constraints:` is also given which use a linear penalty function with a user defined slope to constraint the minimising operation.
-- `Effecient Coding Paradigms:` were used to optimise the code to produce minimal memory and performance overhead. 
+- `Detailed Doxygen Documentation:` has been provided for all classes, structs, and other utilities and assets. You can hover over any method to view the documentation.
+- `Finite Difference:` was employed to compute the derivative, enabling optimisation of non-pure-mathematical "equations".
+- `Secant Method scaling:` can be disabled, and a classic back-tracking Gradient Descent methodology could be employed instead.
+- `Derivativee Scaling of learning rate:` employs the square root of the ratio of current derivatives to the highest derivatives encountered. This approach gradually reduces the learning rate as iterations progress. Even without secant method scaling, this enables a natural decline in the learning rate. Additionally, this feature can be toggled on or off based on user preference.
+- `Momentum based derivative rotation:` introduces a mechanism where the current derivative vector at a point is rotated towards the weighted average of the previous derivative vectors, leveraging the heavy-ball gradient descent approach. This feature can be toggled on or off based on user preference. (\**TODO)
+- `Supports for multi-dimensional:` is provided, allowing for the optimisation of functions with any number of dimensions. This flexibility enables the algorithm to handle a wide range of optimisation scenarios, accommodating diverse problem spaces.
+- `Support for Constraints and bounds:` are also provided, utilising a linear penalty function with a user-defined slope and bounds projection to constrain the minimisation operation. This feature allows users to impose constraints on the optimisation process, ensuring that the solution adheres to specified conditions or limitations.
+- `Effecient Coding Paradigms:` were employed to optimise the code, aiming to minimise memory usage and performance overhead. This approach ensures that the implementation is streamlined and resource-efficient, leading to faster execution and reduced computational costs.
 
 ## How to use?
 1. Clone the repo at your desired location.
 ```bash
 git clone https://github.com/harshabose/gradient_decent.git
 ```
-2. This is a header-only file, just include in you code as below:
+2. This is a header-only file, just include the file in you code as shown below:
 ```cpp
 #include "gradient_decent.h"
 ```
-3. Create an instance of the class gradient_decent as below and set the parameters as desired and run:
+3. Create an instance of the class gradient_decent as shown below and set the parameters as desired and run:
 ```cpp
 auto gradient_operator = gd::gradient_decent<double, double, double>(bivarient_function, 1.6, -1.2);
 gradient_operator.perform_gradient_decent();
 ```
 **NOTE:** Requires C++20
 ## Example
-The following code uses a bechmark 3D exponential equation and has two minima at locations ${\sqrt{2}, -\sqrt{2}}$ and ${-\sqrt{2}, \sqrt{2}}$ with a value of "0". <br><br>
+The following code uses a bechmark 3D exponential objective function which has two minima at locations ${\sqrt{2}, -\sqrt{2}}$ and ${-\sqrt{2}, \sqrt{2}}$ with a minimum value of "0". <br><br>
 
 <p align="center">
   <img src="https://github.com/harshabose/gradient_decent/assets/127072856/299edffc-cba9-4988-8a0f-4b4397cb6b07" alt="bivarient">
@@ -166,7 +168,7 @@ GD CONVERGED with optimal point at: {0.706751, -0.706773}
 with optimal value: 8.75034e-07
 Time taken: 5 microseconds
 ```
-As can be seen, the number of iterations taken (even with a far initial guess) is just 4. Compared to classic Gradient Decent which took 47 iterations for the same settings. This shows the clear advantage of the `Secant Method Scaling` technique. A graphical representation of the classic gradient decent and my algorithm is given below: <br><br>
+As can be seen, the number of iterations required, even with a far initial guess, is just 4. In contrast, the classic Gradient Descent algorithm took 47 iterations under the same settings. This stark difference highlights the clear advantage of the `Secant Method Scaling algorithm`. A graphical representation comparing the performance of the classic gradient descent and my algorithm is provided below: <br><br>
 
 <br>
 
