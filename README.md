@@ -201,7 +201,7 @@ As can be seen, the number of iterations required, even with a far initial guess
         <td class="tg-0lax">4</td>
       </tr>
       <tr>
-        <td class="tg-0lax">Time</td>
+        <td class="tg-0lax">Time (micro-sec)</td>
         <td class="tg-0lax">59</td>
         <td class="tg-0lax">5</td>
       </tr>
