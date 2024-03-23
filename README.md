@@ -11,7 +11,7 @@ f:\;\;\mathbb{R}^d \longrightarrow \mathbb{R}
 
 ```math
 \begin{align}
-\text{subject to } Ax \leq B, \quad l \leq x \leq b
+\text{subject to } Ax \leq B, \quad l_{i} \leq x_{i} \leq b_{i}
 \end{align}
 ```
 
