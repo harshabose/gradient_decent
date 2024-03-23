@@ -24,7 +24,7 @@
  * - When VERBOSITY is disabled (VERBOSITY = 0), the macros expand to empty statements, avoiding any overhead
  *   in production code.
  */
-#define VERBOSITY 0
+#define VERBOSITY 1
 
 #if VERBOSITY
 #define VERBOSE_PRINT(x)  do { \
