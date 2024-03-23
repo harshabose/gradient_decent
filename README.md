@@ -197,18 +197,18 @@ As can be seen, the number of iterations required, even with a far initial guess
       </tr>
       <tr>
         <td class="tg-0lax">Iterations</td>
-        <td class="tg-0lax">4</td>
         <td class="tg-0lax">47</td>
+        <td class="tg-0lax">4</td>
       </tr>
       <tr>
         <td class="tg-0lax">Time</td>
-        <td class="tg-0lax">5</td>
         <td class="tg-0lax">59</td>
+        <td class="tg-0lax">5</td>
       </tr>
       <tr>
         <td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none">Function Calls</span></td>
+        <td class="tg-0lax">343</td>
         <td class="tg-0lax">35</td>
-        <td class="tg-0lax">342</td>
       </tr>
       <tr>
         <td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none">Derivative Scaling?</span></td>
