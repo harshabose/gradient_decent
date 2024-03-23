@@ -56,7 +56,7 @@
 
 
 #include "mathematical_constraint.h"
-#include "unsupported/meta_types.h"
+#include "meta_types.h"
 
 /**
  * @brief Namespace for gradient descent optimisation utilities.
