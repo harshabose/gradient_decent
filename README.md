@@ -181,7 +181,7 @@ As can be seen, the number of iterations required, even with a far initial guess
       <tr>
         <th class="tg-uca5">Parameters</th>
         <th class="tg-0lax">Classic GD</th>
-        <th class="tg-0lax">My GD Algorithm</th>
+        <th class="tg-0lax">`GD with Secant Method Scaling`</th>
       </tr>
     </thead>
     <tbody>
