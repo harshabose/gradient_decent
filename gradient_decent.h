@@ -175,7 +175,7 @@ namespace gd {
 
         /**
          * @brief Default constructor for gradient descent.
-         * Constructs a gradient descent optimizer with NSDMI default parameters.
+         * Constructs a gradient descent optimiser with NSDMI default parameters.
          */
         gradient_decent () = default;
 
