@@ -79,7 +79,7 @@ namespace aux {
              *
              * @code{.cpp}
              * // example
-             * auto constraint1_ = aux::constraints_system<returnType, argsType...>::create_constraint(constraint_function_1, "&#x3C;", 9, 0.001f);
+             * auto constraint1_ = aux::constraints_system<returnType, argsType...>::create_constraint<decltype(constraint_function_1), double>(constraint_function_1, "&#x3C;", 9.0, 0.001f);
              * @endcode
              */
             template <class constraintFuncTypes_, class operatorType_, class valueType_, class toleranceType_>
@@ -179,7 +179,7 @@ namespace aux {
          * and checking constraint violations.
          */
         template<class... constraintFuncTypes>
-        struct constraint_manager final : constraint_manager_base {
+        struct constraint_manager final : public constraint_manager_base {
             /**
              * Alias for the return type of a constraint function.
              */
