@@ -490,17 +490,17 @@ namespace gd {
          *
          * @code{.cpp}
          * //example
-         * auto constraint1_ = aux::constraints_system<returnType, argsType...>::create_constraint(constraint_function_1, "&#x3C;", 9, 0.001f);
+         * auto constraint1_ = aux::constraints_system<returnType, argsType...>::create_constraint<decltype(constraint_function_1), double>(constraint_function_1, "&#x3C;", 9.0, 0.001f);
          * @endcode
          *
          * @note Constraints must be added before performing the optimisation.
          * The method assumes that the provided constraint objects have member variables:
          * `func`, `value`, `operator_`, and `tolerance`.
          * */
-        template <template <class, class, class...> class... createConstraintType, class constraintFuncType, typename valueType, class... argsType_>
-        void add_constraints(createConstraintType<constraintFuncType, valueType, argsType_...>&... constraints) noexcept {
+        template <template <class, class> class... createConstraintType, class constraintFuncType, typename valueType>
+        void add_constraints(createConstraintType<constraintFuncType, valueType>&... constraints) noexcept {
             this->constraints_on = true;
-            this->constraint_manager_ = std::make_unique<aux::constraints_system<returnType, argType...>::template constraint_manager<decltype(constraints.func)...>>(std::move(constraints.func)..., (constraints.value)...);
+            this->constraint_manager_ = std::make_unique<typename aux::constraints_system<returnType, argType...>::template constraint_manager<decltype(constraints.func)...>>(std::move(constraints.func)..., (constraints.value)...);
             this->constraint_manager_->add_operators(std::vector<std::string>{constraints.operator_...});
             this->constraint_manager_->add_tolerances(std::vector<float>{constraints.tolerance...});
             VERBOSE_PRINT("Constraints ON");
