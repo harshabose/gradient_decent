@@ -88,7 +88,7 @@ X + \alpha_{2} \nabla f \text{ is the mirror point}
 \text{perfect guess } X_{new} = X + \left(\frac{\alpha_{2}}{2}\right) \nabla f
 ```
 
-This enables proper scaling of the learning rate to map the derivative set onto the original equation set and provide an optimal estimate of the learning rate at each iteration whenever the learning rate exceeds the forward stepping condition. A pictographical representation is given below. Implementing this novel approach will significantly improve the convergence rate. See the example given below.
+This enables proper scaling of the learning rate to map the derivative set onto the original equation set and provide an optimal estimate of the learning rate at each iteration whenever the learning rate exceeds the forward stepping condition. A pictographical representation is given below. Implementing this novel approach will significantly improve the convergence rate. See the example given below. <br>
 
 <p align="center">
   <img src="https://github.com/harshabose/gradient_decent/assets/127072856/f96d3723-e8c4-43d6-adf1-a46c98393758" alt="Secant Scalling Method Image">
