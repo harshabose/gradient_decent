@@ -56,7 +56,7 @@ X_{new}\,, \, X \in \mathbb{R}^d \quad \nabla f \in \mathbb{R}
 ```
 
 ### Secant Method Scaling
-- **Fact 1:**  As the gradient descent progresses, there comes a point where the step taken eventually overshoots the optimal value (assuming a large enough step is provided). In such cases, most algorithms use back-tracking to reduce the step size to find the next best point to find the next best value which reduces the objective function $f$.
+- **Fact 1:**  As the gradient descent progresses, there comes a point where the step taken eventually overshoots the optimal value (assuming a large enough step is provided). In such cases, most algorithms use back-tracking to reduce the step size to find the next best point which reduces the objective function $f$.
 
 - **Fact 2:**  When Fact 1 is met, there exists another point (let's call this the mirror point) in the direction of the current gradient that is equal to the current optimal value.
 
