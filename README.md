@@ -126,7 +126,6 @@ Gradient Descent Algorithms are used in various fields of science and engineerin
 
 ## Example
 The following code uses a bechmark 3D exponential objective function which has two minima at locations ${\sqrt{2}, -\sqrt{2}}$ and ${-\sqrt{2}, \sqrt{2}}$ with a minimum value of "0". <br><br>
-<img width="835" alt="Screenshot 2024-03-24 at 12 53 33 pm" src="">
 
 <p align="center">
   <img src="https://github.com/harshabose/gradient_decent/assets/127072856/e72895d8-c0c4-4a14-a3c8-c3d0d3d8da6b" alt="bivarient">
