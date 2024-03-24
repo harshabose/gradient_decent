@@ -3,7 +3,7 @@
 
 #include "gradient_decent.h"
 
-double bivarient_function (const double x, const double y) {
+double bivarient_function (const double x, const double y) noexcept {
   constexpr double A = 10;
   return (A * x * y) / (std::exp(x * x + y * y)) + (5.0/std::exp(1.0));
 }
