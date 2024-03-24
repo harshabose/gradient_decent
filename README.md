@@ -121,7 +121,7 @@ gradient_operator.perform_gradient_decent();
 ```
 `NOTE: Requires C++20`
 
-## Where can this be used?
+## Where can this be useful?
 Gradient Descent Algorithms are used in various fields of science and engineering. My modifications can help these fields that need the flexibility of gradient descent but also can benefit from improved convergence rates and reduced computational burden. This modified algorithm can find a comfortable seat in various fields, including Machine Learning and Deep Learning, Numerical Optimisation and Scientific Computation, Image Processing and Computer Vision, Natural Language Processing (NLP), and more. Please give it a try and see if this modification can help with your use case.
 
 ## Example
