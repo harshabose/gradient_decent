@@ -21,7 +21,7 @@ int main () {
 //        gradient_operator->toggle_classic_gradient_algo();  // uncomment this to use classic GD
 
   auto start = std::chrono::high_resolution_clock::now();
-  gradient_operator->perform_gradient_decent();
+  auto [minimum_value, minimum_point] = gradient_operator->perform_gradient_decent();
   auto end = std::chrono::high_resolution_clock::now();
 
   auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
